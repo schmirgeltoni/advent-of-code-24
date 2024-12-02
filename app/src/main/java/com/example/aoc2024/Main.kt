@@ -1,11 +1,13 @@
 package com.example.aoc2024
 
-import com.example.aoc2024.dayOne.Day1Part1
+import com.example.aoc2024.day1.Day1Part1
+import com.example.aoc2024.day1.Day1Part2
 
 fun main() {
-    val dayOneExampleListOne = listOf(3,4,2,1,3,3)
-    val dayOneExampleListTwo = listOf(4,3,5,3,9,3)
-
-    println(Day1Part1.findDistanceBetweenTwoLists(dayOneExampleListOne, dayOneExampleListTwo))
     println(Day1Part1.solution())
+    println(Day1Part2.solution())
+}
+
+fun interface AoCSolution {
+    fun solution() : Any
 }

@@ -4,9 +4,4 @@ plugins {
 
 dependencies {
     implementation(libs.jetbrains.kotlin.stdlib)
-
-}
-
-kotlin {
-    jvmToolchain(17)
 }
