@@ -1,0 +1,12 @@
+[versions]
+agp = "8.7.1"
+kotlin = "1.9.24"
+
+[libraries]
+
+jetbrains-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
