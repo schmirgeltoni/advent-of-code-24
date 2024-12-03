@@ -1,13 +1,13 @@
 package com.example.aoc2024.day1
 
-import com.example.aoc2024.AoCSolution
-import java.io.File
+import com.example.aoc2024.AdventOfCodeChallenge
+import com.example.aoc2024.readFile
 import kotlin.math.abs
 
-object Day1Part1 : AoCSolution {
+object Day1Part1 : AdventOfCodeChallenge {
 
-    val dayOneExampleListOne = listOf(3,4,2,1,3,3)
-    val dayOneExampleListTwo = listOf(4,3,5,3,9,3)
+    val exampleListOne = listOf(3,4,2,1,3,3)
+    val exampleListTwo = listOf(4,3,5,3,9,3)
 
     private fun findDistanceBetweenTwoLists(firstList: List<Int>, secondList: List<Int>): Int {
         if (firstList.size == secondList.size) {
@@ -22,8 +22,8 @@ object Day1Part1 : AoCSolution {
         return -1
     }
 
-    fun getListsFromFile() : Pair<List<Int>, List<Int>> {
-        val readFile = File("app\\src\\main\\java\\com\\example\\aoc2024\\day1\\Input.txt").readLines()
+    fun getListsFromInput() : Pair<List<Int>, List<Int>> {
+        val readFile = readFile("app\\src\\main\\java\\com\\example\\aoc2024\\day1\\Input.txt")
         val firstList: MutableList<Int> = mutableListOf()
         val secondList: MutableList<Int> = mutableListOf()
         readFile.forEach {
@@ -35,7 +35,11 @@ object Day1Part1 : AoCSolution {
     }
 
     override fun solution() : Int {
-        val lists = getListsFromFile()
+        val lists = getListsFromInput()
         return findDistanceBetweenTwoLists(lists.first, lists.second)
+    }
+
+    override fun runWithExampleData(): Any {
+        return findDistanceBetweenTwoLists(exampleListOne, exampleListTwo)
     }
 }

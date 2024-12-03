@@ -1,13 +1,14 @@
 package com.example.aoc2024
 
-import com.example.aoc2024.day1.Day1Part1
-import com.example.aoc2024.day1.Day1Part2
+import com.example.aoc2024.day2.Day2Part1
 
 fun main() {
-    println(Day1Part1.solution())
-    println(Day1Part2.solution())
+    //println("The result with example data is: ${Day2Part1.runWithExampleData()}")
+    println("The result with real data is: ${Day2Part1.solution()}")
 }
 
-fun interface AoCSolution {
-    fun solution() : Any
+interface AdventOfCodeChallenge {
+    fun solution(): Any
+
+    fun runWithExampleData(): Any
 }
