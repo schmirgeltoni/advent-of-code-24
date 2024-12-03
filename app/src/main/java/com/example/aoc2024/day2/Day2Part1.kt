@@ -16,7 +16,8 @@ object Day2Part1 : AdventOfCodeChallenge {
         listOf(1, 3, 6, 7, 9)
     )
 
-    private fun List<Int>.isReportSafe(): Boolean {
+    fun List<Int>.isReportSafe(): Boolean {
+        if (this == emptyList<Int>()) return false
         val firstPair = Pair(this[0], this[1])
         return if (!firstPair.differenceIsSafe()) {
             println(
@@ -35,6 +36,13 @@ object Day2Part1 : AdventOfCodeChallenge {
         }
     }
 
+    private fun Pair<Int, Int>.differenceIsSafe(): Boolean = abs(this.first - this.second) in 1..3
+    private fun Pair<Int, Int>.isAscending(): Boolean = this.first < this.second
+    private fun Pair<Int, Int>.isDescending(): Boolean = this.first > this.second
+
+    /**
+     * @return: false if the condition applies to any two sequential numbers in the list
+     */
     private fun List<Int>.checkRestOfList(condition: (Pair<Int, Int>) -> Boolean): Boolean {
         for (i in 1..this.size - 2) {
             val pair = Pair(this[i], this[i + 1])
@@ -60,13 +68,6 @@ object Day2Part1 : AdventOfCodeChallenge {
         println("$this: safe")
         return true
     }
-
-    private fun Pair<Int, Int>.differenceIsSafe(): Boolean = abs(this.first - this.second) in 1..3
-
-
-    private fun Pair<Int, Int>.isAscending(): Boolean = this.first < this.second
-    private fun Pair<Int, Int>.isDescending(): Boolean = this.first > this.second
-
 
     override fun solution(): Int {
         return readFile("app\\src\\main\\java\\com\\example\\aoc2024\\day2\\Input.txt").count {

@@ -16,7 +16,7 @@ object Day1Part2 : AdventOfCodeChallenge {
         return score
     }
 
-    private fun <T> getMapOfList(list: List<Int>): Map<Int, Int> = list.groupingBy { it }.eachCount()
+    private fun <T> getMapOfList(list: List<T>): Map<T, Int> = list.groupingBy { it }.eachCount()
 
     override fun solution(): Int {
         val lists = Day1Part1.getListsFromInput()
