@@ -5,7 +5,7 @@ import com.example.aoc2024.AdventOfCodeChallenge
 object Day1Part2 : AdventOfCodeChallenge {
 
     private fun calculateSimilarityScore(firstList: List<Int>, secondList: List<Int>): Int {
-        val map = getMapOfList<Int>(secondList)
+        val map = getMapOfList(secondList)
         var score = 0
 
         firstList.forEach {

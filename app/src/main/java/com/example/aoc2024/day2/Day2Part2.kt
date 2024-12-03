@@ -24,7 +24,7 @@ object Day2Part2 : AdventOfCodeChallenge {
     }
 
     override fun runWithExampleData(): Int {
-        return Day2Part1.testReports.count() {
+        return Day2Part1.testReports.count {
             it.isReportSafe() || it.bruteForceProblemDampener()
         }
     }
