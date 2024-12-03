@@ -2,12 +2,10 @@ package com.example.aoc2024.day2
 
 import com.example.aoc2024.AdventOfCodeChallenge
 import com.example.aoc2024.day2.Day2Part1.isReportSafe
-import com.example.aoc2024.readFile
+import com.example.aoc2024.readFileLines
 import com.example.aoc2024.toIntList
 
 object Day2Part2 : AdventOfCodeChallenge {
-
-    override val name: String = "Day 2 Part 2"
 
     private fun List<Int>.bruteForceProblemDampener(): Boolean {
         for (i in this.indices) {
@@ -19,7 +17,7 @@ object Day2Part2 : AdventOfCodeChallenge {
     }
 
     override fun solution(): Int {
-        return readFile("app\\src\\main\\java\\com\\example\\aoc2024\\day2\\Input.txt").count {
+        return readFileLines("day2").count {
             val list = it.split(" ").toIntList()
             list.isReportSafe() || list.bruteForceProblemDampener()
         }

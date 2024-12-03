@@ -1,12 +1,10 @@
 package com.example.aoc2024.day1
 
 import com.example.aoc2024.AdventOfCodeChallenge
-import com.example.aoc2024.readFile
+import com.example.aoc2024.readFileLines
 import kotlin.math.abs
 
 object Day1Part1 : AdventOfCodeChallenge {
-
-    override val name: String = "Day 1 Part 1"
 
     val exampleListOne = listOf(3,4,2,1,3,3)
     val exampleListTwo = listOf(4,3,5,3,9,3)
@@ -25,7 +23,7 @@ object Day1Part1 : AdventOfCodeChallenge {
     }
 
     fun getListsFromInput() : Pair<List<Int>, List<Int>> {
-        val readFile = readFile("app\\src\\main\\java\\com\\example\\aoc2024\\day1\\Input.txt")
+        val readFile = readFileLines("day1")
         val firstList: MutableList<Int> = mutableListOf()
         val secondList: MutableList<Int> = mutableListOf()
         readFile.forEach {

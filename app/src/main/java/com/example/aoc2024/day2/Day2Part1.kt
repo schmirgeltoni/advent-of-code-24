@@ -1,13 +1,11 @@
 package com.example.aoc2024.day2
 
 import com.example.aoc2024.AdventOfCodeChallenge
-import com.example.aoc2024.readFile
+import com.example.aoc2024.readFileLines
 import com.example.aoc2024.toIntList
 import kotlin.math.abs
 
 object Day2Part1 : AdventOfCodeChallenge {
-
-    override val name: String = "Day 2 Part 1"
 
     val testReports = listOf(
         listOf(7, 6, 4, 2, 1),
@@ -52,7 +50,7 @@ object Day2Part1 : AdventOfCodeChallenge {
     }
 
     override fun solution(): Int {
-        return readFile("app\\src\\main\\java\\com\\example\\aoc2024\\day2\\Input.txt").count {
+        return readFileLines("day2").count {
             it.split(" ").toIntList().isReportSafe()
         }
     }

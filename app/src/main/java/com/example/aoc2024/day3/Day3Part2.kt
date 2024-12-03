@@ -3,12 +3,10 @@
 package com.example.aoc2024.day3
 
 import com.example.aoc2024.AdventOfCodeChallenge
+import com.example.aoc2024.readWholeFile
 import com.example.aoc2024.toIntList
-import java.io.File
 
 object Day3Part2: AdventOfCodeChallenge {
-
-    override val name: String = "Day 3 Part 2"
 
     private val testData = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
 
@@ -37,7 +35,7 @@ object Day3Part2: AdventOfCodeChallenge {
     }
 
     override fun solution(): Int {
-        return calculateNumberFromCorruptedData(File("app\\src\\main\\java\\com\\example\\aoc2024\\day3\\Input.txt").readText())
+        return calculateNumberFromCorruptedData(readWholeFile("day3"))
     }
 
     override fun runWithExampleData(): Int {
