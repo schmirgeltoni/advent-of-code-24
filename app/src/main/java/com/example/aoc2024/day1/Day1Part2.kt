@@ -6,15 +6,7 @@ import com.example.aoc2024.countOccurrences
 object Day1Part2 : AdventOfCodeChallenge {
 
     private fun calculateSimilarityScore(firstList: List<Int>, secondList: List<Int>): Int {
-        val map = countOccurrences(secondList)
-        var score = 0
-
-        firstList.forEach {
-            val amountInMap = map[it] ?: 0
-            score += it * amountInMap
-        }
-
-        return score
+        return firstList.sumOf { it * (countOccurrences(secondList)[it] ?: 0) }
     }
 
     override fun solution(): Int {
