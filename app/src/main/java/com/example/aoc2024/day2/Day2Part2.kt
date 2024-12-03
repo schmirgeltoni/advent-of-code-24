@@ -7,6 +7,8 @@ import com.example.aoc2024.toIntList
 
 object Day2Part2 : AdventOfCodeChallenge {
 
+    override val name: String = "Day 2 Part 2"
+
     private fun List<Int>.bruteForceProblemDampener(): Boolean {
         for (i in this.indices) {
             val mutList = this.toMutableList()

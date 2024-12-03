@@ -8,6 +8,8 @@ import java.io.File
 
 object Day3Part1 : AdventOfCodeChallenge {
 
+    override val name: String = "Day 3 Part 1"
+
     private val testData = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
 
     private val regexPattern = Regex("""mul\([1-9]\d{0,2},[1-9]\d{0,2}\)""")

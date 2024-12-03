@@ -7,6 +7,8 @@ import kotlin.math.abs
 
 object Day2Part1 : AdventOfCodeChallenge {
 
+    override val name: String = "Day 2 Part 1"
+
     val testReports = listOf(
         listOf(7, 6, 4, 2, 1),
         listOf(1, 2, 7, 8, 9),
@@ -20,12 +22,6 @@ object Day2Part1 : AdventOfCodeChallenge {
         if (this == emptyList<Int>()) return false
         val firstPair = Pair(this[0], this[1])
         return if (!firstPair.differenceIsSafe()) {
-            println(
-                """
-                    $this: unsafe
-                    Reason: Sequence ${firstPair.first} and ${firstPair.second} do not match distance requirement
-                """.trimIndent()
-            )
             false
         } else if (firstPair.isDescending()) {
             this.checkRestOfList { it.first < it.second }
@@ -47,25 +43,11 @@ object Day2Part1 : AdventOfCodeChallenge {
         for (i in 1..this.size - 2) {
             val pair = Pair(this[i], this[i + 1])
             if (condition(pair)) {
-                println(
-                    """
-                    $this: unsafe
-                    Reason: Sequence ${this[i]} and ${this[i + 1]} violated order
-                """.trimIndent()
-                )
                 return false
-
             } else if (!pair.differenceIsSafe()) {
-                println(
-                    """
-                    $this: unsafe
-                    Reason: Sequence ${this[i]} and ${this[i + 1]} do not match distance requirement
-                """.trimIndent()
-                )
                 return false
             }
         }
-        println("$this: safe")
         return true
     }
 
