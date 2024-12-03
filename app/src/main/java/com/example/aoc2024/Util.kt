@@ -13,5 +13,5 @@ fun List<String>.toIntList(): List<Int> {
             println(e.message)
         }
     }
-    return ret
+    return ret.toList()
 }

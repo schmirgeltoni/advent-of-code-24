@@ -2,9 +2,10 @@ package com.example.aoc2024
 
 import com.example.aoc2024.day2.Day2Part1
 import com.example.aoc2024.day2.Day2Part2
+import com.example.aoc2024.day3.Day3Part1
 
 fun main() {
-    Day2Part2.runBoth()
+    Day3Part1.runBoth()
 }
 
 interface AdventOfCodeChallenge {
