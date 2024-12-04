@@ -13,23 +13,20 @@ object Day3Part2: AdventOfCodeChallenge {
     private val regexPattern = Regex("""mul\([1-9]\d{0,2},[1-9]\d{0,2}\)|do\(\)|don't\(\)""")
 
     private fun calculateNumberFromCorruptedData(data : String) : Int {
-        val processedData = regexPattern.findAll(data).map { it.value }.toList()
         var sum = 0
         var canCalculate = true
-        for (i in processedData.indices){
-            val current = processedData[i]
+        regexPattern.findAll(data).map { it.value }.toList().forEach{ line ->
             when {
-                current == "do()" -> canCalculate = true
-                current == "don't()" -> canCalculate = false
-                current.startsWith("mul") -> {
-                    if (canCalculate){
-                        val numbers = Day3Part1.regexNumbers.findAll(current).map { it.value }.toList().toIntList()
+                line == "do()" -> canCalculate = true
+                line == "don't()" -> canCalculate = false
+                line.startsWith("mul") -> {
+                    if (canCalculate) {
+                        val numbers = Day3Part1.regexNumbers.findAll(line).map { it.value }.toList().toIntList()
                         sum += numbers[0] * numbers[1]
                     }
                 }
-                else -> throw IllegalArgumentException("$current was not recognized")
+                else -> throw IllegalArgumentException("$line was not recognized")
             }
-
         }
         return sum
     }
