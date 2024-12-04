@@ -4,10 +4,10 @@ import com.example.aoc2024.AdventOfCodeChallenge
 import com.example.aoc2024.extractDiagonals
 import com.example.aoc2024.getColumnsAsStrings
 import com.example.aoc2024.readFileLines
-import com.example.aoc2024.toListOfListOfChars
 
 object Day4Part1 : AdventOfCodeChallenge {
 
+    @Suppress("SpellCheckingInspection")
     val testData = listOf(
         "MMMSXXMASM",
         "MSAMXMSMSA",
@@ -21,21 +21,21 @@ object Day4Part1 : AdventOfCodeChallenge {
         "MXMXAXMASX"
     )
 
-    val xmasRegex = Regex.fromLiteral("XMAS")
+    private val xmasRegex = Regex.fromLiteral("XMAS")
 
     private fun findXMASwordSearch(input: List<String>): Int {
         var count = 0
         // horizontally, backwards and forwards
-        input.forEach {
-            it.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
+        input.forEach { string ->
+            string.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
         }
         // vertically, backwards and forwards
-        input.toListOfListOfChars().getColumnsAsStrings().forEach {
-            it.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
+        input.getColumnsAsStrings().forEach { string ->
+            string.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
         }
         // diagonal
-        input.extractDiagonals(4).forEach {
-            it.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
+        input.extractDiagonals(4).forEach { string ->
+            string.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
         }
         return count
     }

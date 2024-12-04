@@ -7,6 +7,7 @@ import com.example.aoc2024.day2.Day2Part2
 import com.example.aoc2024.day3.Day3Part1
 import com.example.aoc2024.day3.Day3Part2
 import com.example.aoc2024.day4.Day4Part1
+import com.example.aoc2024.day4.Day4Part2
 
 val Challenges = listOf(
     Day1Part1,
@@ -16,7 +17,7 @@ val Challenges = listOf(
     Day3Part1,
     Day3Part2,
     Day4Part1,
-    //    Day4Part2,
+    Day4Part2,
     //    Day5Part1,
     //    Day5Part2,
     //    Day6Part1,
@@ -60,23 +61,7 @@ val Challenges = listOf(
 )
 
 fun main() {
-    Day4Part1.runBoth()
-}
-
-interface AdventOfCodeChallenge {
-    val name : String
-        get() = this.toString().substring(25..33).replace("(?<=[a-zA-Z])(?=\\d)".toRegex(), " ").replace("(?<=\\d)(?=[a-zA-Z])".toRegex(), " ")
-
-    fun solution(): Any
-
-    fun runWithExampleData(): Any
-
-    fun runBoth() {
-        println("""
-            $name
-            The result with test input is: ${this.runWithExampleData()}
-            The result with real input is: ${this.solution()}
-            
-        """.trimIndent())
+    Challenges.forEach {
+        it.runBoth()
     }
 }

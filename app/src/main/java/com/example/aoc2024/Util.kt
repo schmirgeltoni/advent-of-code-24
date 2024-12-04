@@ -8,20 +8,7 @@ import java.io.File
 fun readFileLines(packageName: String): List<String> =
     File("app\\src\\main\\java\\com\\example\\aoc2024\\$packageName\\Input.txt").readLines()
 
-/**
- *
- */
-fun List<String>.toListOfListOfChars(): List<List<Char>> = this.map { it.toList() }
-
-fun List<Char>.convertToString() : String {
-    var ret = ""
-    this.forEach {
-        ret += it
-    }
-    return ret
-}
-
-fun List<List<Char>>.getColumnsAsStrings() : List<String> {
+fun List<String>.getColumnsAsStrings() : List<String> {
     val ret = mutableListOf<String>()
     for (i in this.indices){
         var currentString = ""
@@ -66,18 +53,6 @@ fun List<String>.extractDiagonals(minLength: Int): List<String> {
         }
     }
 
-    return ret
-}
-
-fun List<List<Char>>.getRowsAsStrings() : List<String> {
-    val ret = mutableListOf<String>()
-    for (i in 3..this.size -4){
-        var currentString = ""
-        for (j in this[0].indices){
-            currentString += this[j][i]
-        }
-        ret.add(currentString)
-    }
     return ret
 }
 
