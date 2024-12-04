@@ -6,6 +6,7 @@ import com.example.aoc2024.day2.Day2Part1
 import com.example.aoc2024.day2.Day2Part2
 import com.example.aoc2024.day3.Day3Part1
 import com.example.aoc2024.day3.Day3Part2
+import com.example.aoc2024.day4.Day4Part1
 
 val Challenges = listOf(
     Day1Part1,
@@ -14,7 +15,7 @@ val Challenges = listOf(
     Day2Part2,
     Day3Part1,
     Day3Part2,
-    //    Day4Part1,
+    Day4Part1,
     //    Day4Part2,
     //    Day5Part1,
     //    Day5Part2,
@@ -59,9 +60,7 @@ val Challenges = listOf(
 )
 
 fun main() {
-    Challenges.forEach {
-        it.runBoth()
-    }
+    Day4Part1.runBoth()
 }
 
 interface AdventOfCodeChallenge {
