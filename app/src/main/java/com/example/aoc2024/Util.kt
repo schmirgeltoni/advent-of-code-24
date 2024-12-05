@@ -71,3 +71,8 @@ fun <T> countOccurrences(list: List<T>): Map<T, Int> = list.groupingBy { it }.ea
  * Converts a list of strings to a list of integers
  */
 fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
+
+/**
+ * Prints [this] and returns it
+ */
+fun <T> T.println() = this.also { println(this) }
