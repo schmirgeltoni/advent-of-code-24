@@ -40,7 +40,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         }
     }
 
-    private val testData = listOf(
+    val testData = listOf(
         "....#.....",
         ".........#",
         "..........",
@@ -53,7 +53,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         "......#..."
     )
 
-    private fun List<String>.mapInputToModel(): MutableList<MutableList<Position>> {
+    fun List<String>.mapInputToModel(): MutableList<MutableList<Position>> {
         return map {
             it.toCharArray()
         }.map {
@@ -90,15 +90,18 @@ object Day6Part1 : AdventOfCodeChallenge {
      * Makes the next step of the guard according to logic and updates [this] and [guard] accordingly
      * @return true if the guard has reached an edge, false if not
      */
-    private fun MutableList<MutableList<Position>>.nextStep(guard: Guard): Boolean {
+    fun MutableList<MutableList<Position>>.nextStep(guard: Guard): Boolean {
         val x = guard.x
         val y = guard.y
-        if (x !in 0..<size - 1 || y !in 0..<this[0].size - 1) return true
+        if (x !in 1..<size - 1 || y !in 1..<this[0].size - 1) return true
         when (guard.facing) {
             Direction.Up -> {
                 when (this[y - 1][x]) {
                     Position.Guard -> throw Exception()
-                    Position.Obstacle -> guard.changeDirection()
+                    Position.Obstacle -> {
+                        guard.changeDirection()
+                        return nextStep(guard)
+                    }
                     Position.Free, Position.Visited -> {
                         guard.takeStep()
                         this[y][x] = Position.Visited
@@ -110,7 +113,10 @@ object Day6Part1 : AdventOfCodeChallenge {
             Direction.Down -> {
                 when (this[y + 1][x]) {
                     Position.Guard -> throw Exception()
-                    Position.Obstacle -> guard.changeDirection()
+                    Position.Obstacle -> {
+                        guard.changeDirection()
+                        return nextStep(guard)
+                    }
                     Position.Free, Position.Visited -> {
                         guard.takeStep()
                         this[y][x] = Position.Visited
@@ -122,7 +128,10 @@ object Day6Part1 : AdventOfCodeChallenge {
             Direction.Left -> {
                 when (this[y][x - 1]) {
                     Position.Guard -> throw Exception()
-                    Position.Obstacle -> guard.changeDirection()
+                    Position.Obstacle -> {
+                        guard.changeDirection()
+                        return nextStep(guard)
+                    }
                     Position.Free, Position.Visited -> {
                         guard.takeStep()
                         this[y][x] = Position.Visited
@@ -134,7 +143,10 @@ object Day6Part1 : AdventOfCodeChallenge {
             Direction.Right -> {
                 when (this[y][x + 1]) {
                     Position.Guard -> throw Exception()
-                    Position.Obstacle -> guard.changeDirection()
+                    Position.Obstacle -> {
+                        guard.changeDirection()
+                        return nextStep(guard)
+                    }
                     Position.Free, Position.Visited -> {
                         guard.takeStep()
                         this[y][x] = Position.Visited
@@ -146,7 +158,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         return false
     }
 
-    private fun MutableList<MutableList<Position>>.findGuard(): Guard {
+    fun MutableList<MutableList<Position>>.findGuard(): Guard {
         val ret = Guard(0, 0, Direction.Up)
         for (i in indices) {
             for (j in this[0].indices) {
@@ -159,7 +171,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         return ret
     }
 
-    private fun MutableList<MutableList<Position>>.logModel(): MutableList<MutableList<Position>> {
+    fun MutableList<MutableList<Position>>.logModel(): MutableList<MutableList<Position>> {
         forEach {
             it.forEach { position: Position ->
                 print(position.char)

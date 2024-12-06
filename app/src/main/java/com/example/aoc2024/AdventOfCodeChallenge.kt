@@ -2,8 +2,7 @@ package com.example.aoc2024
 
 interface AdventOfCodeChallenge {
     val name: String
-        get() = this.toString().substring(25..33).replace("(?<=[a-zA-Z])(?=\\d)".toRegex(), " ")
-            .replace("(?<=\\d)(?=[a-zA-Z])".toRegex(), " ")
+        get() = this::class.simpleName.toString()
 
     fun runWithRealData(): Int
     fun runWithExampleData(): Int

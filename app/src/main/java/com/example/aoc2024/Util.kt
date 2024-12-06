@@ -8,51 +8,15 @@ import java.io.File
 fun readFileLines(packageName: String): List<String> =
     File("app\\src\\main\\java\\com\\example\\aoc2024\\$packageName\\Input.txt").readLines()
 
-fun List<String>.getColumnsAsStrings() : List<String> {
+fun List<String>.getColumnsAsStrings(): List<String> {
     val ret = mutableListOf<String>()
-    for (i in this.indices){
+    for (i in this.indices) {
         var currentString = ""
-        for (j in this[0].indices){
+        for (j in this[0].indices) {
             currentString += this[j][i]
         }
         ret.add(currentString)
     }
-    return ret
-}
-
-fun List<String>.extractDiagonals(minLength: Int): List<String> {
-    val nRows = this.size
-    val nCols = this[0].length
-    val ret = mutableListOf<String>()
-
-    // Extract top-left to bottom-right (\) diagonals
-    for (start in 0 until nCols + nRows - 1) {
-        val diagonal = StringBuilder()
-        for (row in 0 until nRows) {
-            val col = start - row
-            if (col in 0 until nCols) {
-                diagonal.append(this[row][col])
-            }
-        }
-        if (diagonal.length >= minLength) {
-            ret.add(diagonal.toString())
-        }
-    }
-
-    // Extract top-right to bottom-left (/) diagonals
-    for (start in -(nRows - 1) until nCols) {
-        val diagonal = StringBuilder()
-        for (row in 0 until nRows) {
-            val col = start + row
-            if (col in 0 until nCols) {
-                diagonal.append(this[row][col])
-            }
-        }
-        if (diagonal.length >= minLength) {
-            ret.add(diagonal.toString())
-        }
-    }
-
     return ret
 }
 
@@ -75,9 +39,9 @@ fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
 /**
  * Prints [this] and returns it
  */
-fun <T> T.log() : T = this.also { println(this) }
+fun <T> T.log(): T = this.also { println(this) }
 
-fun <T> Collection<Collection<T>>.logMatrix() : Collection<Collection<T>> {
+fun <T> Collection<Collection<T>>.logMatrix(): Collection<Collection<T>> {
     this.forEach {
         it.forEach { element ->
             print(element.toString())
