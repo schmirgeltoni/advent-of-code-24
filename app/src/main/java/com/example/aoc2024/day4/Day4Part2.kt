@@ -17,7 +17,7 @@ object Day4Part2 : AdventOfCodeChallenge {
     }
 
 
-    override fun solution(): Any {
+    override fun runWithRealData(): Any {
         return findXMASWordSearch(readFileLines("day4"))
     }
 

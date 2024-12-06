@@ -75,4 +75,4 @@ fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
 /**
  * Prints [this] and returns it
  */
-fun <T> T.println() = this.also { println(this) }
+fun <T> T.log() : T = this.also { println(this) }

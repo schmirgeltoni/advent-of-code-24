@@ -49,7 +49,7 @@ object Day2Part1 : AdventOfCodeChallenge {
         return true
     }
 
-    override fun solution(): Int {
+    override fun runWithRealData(): Int {
         return readFileLines("day2").count {
             it.split(" ").toIntList().isReportSafe()
         }

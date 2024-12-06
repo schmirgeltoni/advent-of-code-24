@@ -31,7 +31,7 @@ object Day3Part2: AdventOfCodeChallenge {
         return sum
     }
 
-    override fun solution(): Int {
+    override fun runWithRealData(): Int {
         return calculateNumberFromCorruptedData(readWholeFile("day3"))
     }
 

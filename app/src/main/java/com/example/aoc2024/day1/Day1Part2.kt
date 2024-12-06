@@ -9,7 +9,7 @@ object Day1Part2 : AdventOfCodeChallenge {
         return firstList.sumOf { it * (countOccurrences(secondList)[it] ?: 0) }
     }
 
-    override fun solution(): Int {
+    override fun runWithRealData(): Int {
         val lists = Day1Part1.getListsFromInput()
 
         return calculateSimilarityScore(

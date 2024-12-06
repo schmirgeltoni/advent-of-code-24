@@ -5,7 +5,7 @@ import com.example.aoc2024.readWholeFile
 
 object Day5Part1 : AdventOfCodeChallenge {
 
-    private val testOrdering =
+    val testOrdering =
         mapOf(
             47 to listOf(53, 13, 61, 29),
             97 to listOf(13, 61, 47, 29, 53, 75),
@@ -15,7 +15,7 @@ object Day5Part1 : AdventOfCodeChallenge {
             53 to listOf(29, 13)
         )
 
-    private val testUpdates = listOf(
+    val testUpdates = listOf(
         listOf(75, 47, 61, 53, 29),
         listOf(97, 61, 53, 29, 13),
         listOf(75, 29, 13),
@@ -24,13 +24,13 @@ object Day5Part1 : AdventOfCodeChallenge {
         listOf(97, 13, 75, 29, 47)
     )
 
-    private fun getUpdates(input: String) =
+    fun getUpdates(input: String) =
         input.split("\r\n")
             .map { updatesString: String ->
                 updatesString.split(",").map { it.toInt() }
             }
 
-    private fun getMapOfPageOrderingRules(input: String): Map<Int, List<Int>> =
+    fun getMapOfPageOrderingRules(input: String): Map<Int, List<Int>> =
         input.split("\r\n").map {
             it.split("|")
         }.map {
@@ -38,6 +38,9 @@ object Day5Part1 : AdventOfCodeChallenge {
         }
             .groupBy({ it.first }, { it.second })
 
+    /**
+     * @return 0 if the update is not ordered correctly and the middle number of the update if it is ordered correctly
+     */
     private fun List<Int>.isUpdatesCorrectlyOrdered(orderingRules: Map<Int, List<Int>>): Int {
         for (i in 0..<size - 1) {
             if (!(orderingRules[this[i]]
@@ -51,30 +54,26 @@ object Day5Part1 : AdventOfCodeChallenge {
      * @return the page ordering rules in [Pair.first] and the updates in [Pair.second]
      * @throws IllegalArgumentException if the input could not be split up correctly
      */
-    private fun splitPageOrderingRulesAndUpdates(input: String): Pair<String, String> {
+    fun splitPageOrderingRulesAndUpdates(input: String): Pair<String, String> {
         val split = input.split("\r\n\r\n")
             .also { require(it.size == 2) }
         return Pair(split[0], split[1])
     }
 
-    override fun solution(): Any {
+    override fun runWithRealData(): Any {
         val transformedData =
             splitPageOrderingRulesAndUpdates(readWholeFile("day5"))
 
+        val orderingRules = getMapOfPageOrderingRules(transformedData.first)
+
         return getUpdates(transformedData.second).sumOf {
-            it.isUpdatesCorrectlyOrdered(
-                getMapOfPageOrderingRules(
-                    transformedData.first
-                )
-            )
+            it.isUpdatesCorrectlyOrdered(orderingRules)
         }
     }
 
     override fun runWithExampleData(): Any {
         return testUpdates.sumOf {
-            it.isUpdatesCorrectlyOrdered(
-                testOrdering
-            )
+            it.isUpdatesCorrectlyOrdered(testOrdering)
         }
     }
 }

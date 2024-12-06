@@ -44,7 +44,7 @@ object Day4Part1 : AdventOfCodeChallenge {
         return regex.findAll(this).count() + regex.findAll(this.reversed()).count()
     }
 
-    override fun solution(): Int {
+    override fun runWithRealData(): Int {
         return findXMASwordSearch(readFileLines("day4"))
     }
 
