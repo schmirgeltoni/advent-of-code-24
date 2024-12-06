@@ -17,11 +17,11 @@ object Day4Part2 : AdventOfCodeChallenge {
     }
 
 
-    override fun runWithRealData(): Any {
+    override fun runWithRealData(): Int {
         return findXMASWordSearch(readFileLines("day4"))
     }
 
-    override fun runWithExampleData(): Any {
+    override fun runWithExampleData(): Int {
         return findXMASWordSearch(Day4Part1.testData)
     }
 }

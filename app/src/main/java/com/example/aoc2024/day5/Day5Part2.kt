@@ -23,7 +23,7 @@ object Day5Part2 : AdventOfCodeChallenge {
         return 0
     }
 
-    override fun runWithRealData(): Any {
+    override fun runWithRealData(): Int {
         val transformedData =
             splitPageOrderingRulesAndUpdates(readWholeFile("day5"))
 

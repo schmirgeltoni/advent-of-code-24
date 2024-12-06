@@ -39,7 +39,7 @@ object Day1Part1 : AdventOfCodeChallenge {
         return findDistanceBetweenTwoLists(lists.first, lists.second)
     }
 
-    override fun runWithExampleData(): Any {
+    override fun runWithExampleData(): Int {
         return findDistanceBetweenTwoLists(exampleListOne, exampleListTwo)
     }
 }

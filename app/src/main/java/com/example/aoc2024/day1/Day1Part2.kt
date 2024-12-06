@@ -18,7 +18,7 @@ object Day1Part2 : AdventOfCodeChallenge {
         )
     }
 
-    override fun runWithExampleData(): Any {
+    override fun runWithExampleData(): Int {
         return calculateSimilarityScore(
             Day1Part1.exampleListOne,
             Day1Part1.exampleListTwo

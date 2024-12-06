@@ -10,6 +10,7 @@ import com.example.aoc2024.day4.Day4Part1
 import com.example.aoc2024.day4.Day4Part2
 import com.example.aoc2024.day5.Day5Part1
 import com.example.aoc2024.day5.Day5Part2
+import com.example.aoc2024.day6.Day6Part1
 
 val Challenges = listOf(
     Day1Part1,
@@ -22,7 +23,7 @@ val Challenges = listOf(
     Day4Part2,
     Day5Part1,
     Day5Part2,
-    //    Day6Part1,
+    Day6Part1,
     //    Day6Part2,
     //    Day7Part1,
     //    Day7Part2,

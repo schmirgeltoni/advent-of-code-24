@@ -76,3 +76,13 @@ fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
  * Prints [this] and returns it
  */
 fun <T> T.log() : T = this.also { println(this) }
+
+fun <T> Collection<Collection<T>>.logMatrix() : Collection<Collection<T>> {
+    this.forEach {
+        it.forEach { element ->
+            print(element.toString())
+        }
+        println()
+    }
+    return this
+}

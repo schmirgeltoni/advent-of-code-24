@@ -60,7 +60,7 @@ object Day5Part1 : AdventOfCodeChallenge {
         return Pair(split[0], split[1])
     }
 
-    override fun runWithRealData(): Any {
+    override fun runWithRealData(): Int {
         val transformedData =
             splitPageOrderingRulesAndUpdates(readWholeFile("day5"))
 
@@ -71,7 +71,7 @@ object Day5Part1 : AdventOfCodeChallenge {
         }
     }
 
-    override fun runWithExampleData(): Any {
+    override fun runWithExampleData(): Int {
         return testUpdates.sumOf {
             it.isUpdatesCorrectlyOrdered(testOrdering)
         }
