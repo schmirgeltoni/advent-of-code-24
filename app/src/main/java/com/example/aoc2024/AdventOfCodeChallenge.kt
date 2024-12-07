@@ -4,8 +4,8 @@ interface AdventOfCodeChallenge {
     val name: String
         get() = this::class.simpleName.toString()
 
-    fun runWithRealData(): Int
-    fun runWithExampleData(): Int
+    fun runWithRealData(): Any
+    fun runWithExampleData(): Any
     fun runBoth() {
         println(
             """
