@@ -13,6 +13,7 @@ import com.example.aoc2024.day5.Day5Part2
 import com.example.aoc2024.day6.Day6Part1
 import com.example.aoc2024.day6.Day6Part2
 import com.example.aoc2024.day7.Day7Part1
+import com.example.aoc2024.day7.Day7Part2
 
 val Challenges = listOf(
     Day1Part1,
@@ -67,4 +68,5 @@ val Challenges = listOf(
 
 fun main() {
     Day7Part1.runBoth()
+    Day7Part2.runBoth()
 }

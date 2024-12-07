@@ -17,10 +17,7 @@ object Day7Part1 : AdventOfCodeChallenge {
         292: 11 6 16 20
     """.trimIndent().split("\n")
 
-    private fun isEquationPossible(result: Long, numbers: List<Long>): Boolean {
-        if (numbers.isEmpty()) return false
-        if (numbers.size == 1) return numbers[0] == result
-
+    private val isEquationPossible = { result: Long, numbers: List<Long> ->
         fun evaluate(index: Int, current: Long): Boolean {
             if (index == numbers.size) return current == result
             if (evaluate(index + 1, current + numbers[index])) return true
@@ -28,26 +25,24 @@ object Day7Part1 : AdventOfCodeChallenge {
 
             return false
         }
-
-        // Start evaluation from the first number
-        return evaluate(1, numbers[0])
+        evaluate(1, numbers[0])
     }
 
-    private fun List<String>.sumUpCorrectEquations(): Long {
+    fun List<String>.sumUpCorrectEquations(equationValidator : (result: Long, numbers: List<Long>) -> Boolean): Long {
         var res = 0L
         this.forEach {
             val (result, numbers) = it.split(": ")
-            if (isEquationPossible(result.toLong(),numbers.split(" ").map(String::toLong)))
+            if (equationValidator(result.toLong(),numbers.split(" ").map(String::toLong)))
                 res += result.toLong()
         }
         return res
     }
 
     override fun runWithRealData(): Long {
-        return readFileLines("day7").sumUpCorrectEquations()
+        return readFileLines("day7").sumUpCorrectEquations(isEquationPossible)
     }
 
     override fun runWithExampleData(): Long {
-        return testData.sumUpCorrectEquations()
+        return testData.sumUpCorrectEquations(isEquationPossible)
     }
 }
