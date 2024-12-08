@@ -42,7 +42,12 @@ fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
 fun <T> T.log(): T = this.also { println(this) }
 
 fun <T> Collection<Collection<T>>.logMatrix(): Collection<Collection<T>> {
-    this.forEach {
+    print(" ")
+    for (i in indices) print(i % 10)
+    println()
+    var row = 0
+    forEach {
+        print(row++ % 10)
         it.forEach { element ->
             print(element.toString())
         }
