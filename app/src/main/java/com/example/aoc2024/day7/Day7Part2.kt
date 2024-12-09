@@ -23,11 +23,11 @@ object Day7Part2 : AdventOfCodeChallenge {
         evaluate(1, numbers[0])
     }
 
-    override fun runWithRealData(): Any {
+    override fun solution(): Any {
         return readFileLines("day7").sumUpCorrectEquations(isEquationPossible)
     }
 
-    override fun runWithExampleData(): Any {
+    override fun test(): Any {
         return testData.sumUpCorrectEquations(isEquationPossible)
     }
 }

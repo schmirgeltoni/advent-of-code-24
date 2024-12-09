@@ -34,12 +34,12 @@ object Day1Part1 : AdventOfCodeChallenge {
         return Pair(firstList, secondList)
     }
 
-    override fun runWithRealData() : Int {
+    override fun solution() : Int {
         val lists = getListsFromInput()
         return findDistanceBetweenTwoLists(lists.first, lists.second)
     }
 
-    override fun runWithExampleData(): Int {
+    override fun test(): Int {
         return findDistanceBetweenTwoLists(exampleListOne, exampleListTwo)
     }
 }

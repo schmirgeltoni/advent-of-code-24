@@ -79,11 +79,11 @@ object Day4Part1 : AdventOfCodeChallenge {
         return regex.findAll(this).count() + regex.findAll(this.reversed()).count()
     }
 
-    override fun runWithRealData(): Int {
+    override fun solution(): Int {
         return findXMASwordSearch(readFileLines("day4"))
     }
 
-    override fun runWithExampleData(): Int {
+    override fun test(): Int {
         return findXMASwordSearch(testData)
     }
 }

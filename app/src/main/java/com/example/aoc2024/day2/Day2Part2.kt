@@ -16,14 +16,14 @@ object Day2Part2 : AdventOfCodeChallenge {
         return false
     }
 
-    override fun runWithRealData(): Int {
+    override fun solution(): Int {
         return readFileLines("day2").count {
             val list = it.split(" ").toIntList()
             list.isReportSafe() || list.bruteForceProblemDampener()
         }
     }
 
-    override fun runWithExampleData(): Int {
+    override fun test(): Int {
         return Day2Part1.testReports.count {
             it.isReportSafe() || it.bruteForceProblemDampener()
         }

@@ -3,14 +3,15 @@ package com.example.aoc2024.day9
 import com.example.aoc2024.AdventOfCodeChallenge
 import com.example.aoc2024.readWholeFile
 
+@Suppress("MayBeConstant")
 object Day9Part1 : AdventOfCodeChallenge {
 
     val testData = "2333133121414131402"
 
-    private fun List<Int?>.printBlocks() : List<Int?> {
-        this.forEach { print(it ?: ".") }
-        println()
-        return this
+    fun List<Int?>.getBlockView(): String {
+        var ret = ""
+        this.forEach { ret += it ?: "." }
+        return ret
     }
 
     private fun MutableList<Int?>.compactFileSystem(): List<Int?> {
@@ -23,17 +24,15 @@ object Day9Part1 : AdventOfCodeChallenge {
                 if (this[indexR] != null) {
                     this[indexL] = this[indexR]
                     this[indexR] = null
-                }
-                else
+                } else
                     indexR--
-            }
-            else
+            } else
                 indexL++
         }
-        return this//.filterNotNull()
+        return this
     }
 
-    private fun String.toFileSystemWithEmptyBlocks(): MutableList<Int?> {
+    fun String.toFileSystem(): MutableList<Int?> {
         val file = mutableListOf<Int?>()
         for (i in this.indices) {
             if (i % 2 == 0) {
@@ -49,21 +48,23 @@ object Day9Part1 : AdventOfCodeChallenge {
         return file
     }
 
-    private fun List<Int?>.fileSystemCheckSum() : Long {
+    fun List<Int?>.fileSystemCheckSum(): Long {
         var sum = 0L
-        for (i in indices){
+        for (i in indices) {
             sum += if (this[i] != null) i * this[i]!! else 0
         }
         return sum
     }
 
-    override fun runWithRealData(): Any {
-        val fileSystem = readWholeFile("day9").toFileSystemWithEmptyBlocks().compactFileSystem()
+    override fun solution(): Any {
+        val fileSystem = readWholeFile("day9").toFileSystem().compactFileSystem()
         return fileSystem.fileSystemCheckSum()
     }
 
-    override fun runWithExampleData(): Any {
-        val fileSystem = testData.toFileSystemWithEmptyBlocks()
+    override fun test(): Any {
+        val fileSystem = testData.toFileSystem()
+        fileSystem.getBlockView()
         return fileSystem.compactFileSystem().fileSystemCheckSum()
+            .also { fileSystem.getBlockView() }
     }
 }

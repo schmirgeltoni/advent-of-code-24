@@ -120,12 +120,12 @@ object Day8Part1 : AdventOfCodeChallenge {
         return antinodes
     }
 
-    override fun runWithRealData(): Any {
+    override fun solution(): Any {
         return 271
     }
 
 
-    override fun runWithExampleData(): Any {
+    override fun test(): Any {
         return 14
     }
 }

@@ -68,7 +68,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         }.toMutableList()
     }
 
-    override fun runWithRealData(): Int {
+    override fun solution(): Int {
         val model = readFileLines("day6").mapInputToModel()
         val guard = model.findGuard()
         while (!model.nextStep(guard)) {
@@ -77,7 +77,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         return model.flatten().count { it == Position.Visited || it == Position.Guard }
     }
 
-    override fun runWithExampleData(): Int {
+    override fun test(): Int {
         val model = testData.mapInputToModel()
         val guard = model.findGuard()
         while (!model.nextStep(guard)) {

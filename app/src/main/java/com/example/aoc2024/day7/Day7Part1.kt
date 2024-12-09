@@ -38,11 +38,11 @@ object Day7Part1 : AdventOfCodeChallenge {
         return res
     }
 
-    override fun runWithRealData(): Long {
+    override fun solution(): Long {
         return readFileLines("day7").sumUpCorrectEquations(isEquationPossible)
     }
 
-    override fun runWithExampleData(): Long {
+    override fun test(): Long {
         return testData.sumUpCorrectEquations(isEquationPossible)
     }
 }

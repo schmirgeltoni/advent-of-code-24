@@ -37,11 +37,11 @@ object Day6Part2 : AdventOfCodeChallenge {
         return count
     }
 
-    override fun runWithRealData(): Int {
+    override fun solution(): Int {
         return readFileLines("day6").mapInputToModel().testEveryPossibility()
     }
 
-    override fun runWithExampleData(): Int {
+    override fun test(): Int {
         return testData.mapInputToModel().testEveryPossibility()
     }
 
