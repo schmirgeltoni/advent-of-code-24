@@ -53,24 +53,6 @@ object Day10Part1 : AdventOfCodeChallenge {
         return sum
     }
 
-    private fun List<List<Int>>.findHikingTrails(y: Int, x: Int): Int {
-        val currentHeight = this[y][x]
-        if (currentHeight == 9) return 1
-        var sum = 0
-        //up
-        if (y != 0 && this[y - 1][x] == currentHeight + 1) sum += findHikingTrails(y - 1, x)
-        // down
-        if (y != size - 1 && this[y + 1][x] == currentHeight + 1) sum += findHikingTrails(y + 1, x)
-        // left
-        if (x != 0 && this[y][x - 1] == currentHeight + 1) sum += findHikingTrails(y, x - 1)
-        // right
-        if (x != this[0].size - 1 && this[y][x + 1] == currentHeight + 1) sum += findHikingTrails(
-            y,
-            x + 1
-        )
-        return sum
-    }
-
     override fun solution(): Any {
         return readFileLines("day10").map { it.toList().map { it.digitToInt() } }.sumUpTrailScores()
     }
