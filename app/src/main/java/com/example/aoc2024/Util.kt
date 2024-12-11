@@ -1,6 +1,16 @@
 package com.example.aoc2024
 
+import java.awt.geom.Point2D
 import java.io.File
+
+enum class Direction {
+    Up, Right, Down, Left
+}
+
+data class Point(val x: Int, val y: Int) {
+    override fun toString(): String = "($y|$x)"
+}
+
 
 /**
  * Returns the lines of Input.txt from the given package
@@ -41,15 +51,24 @@ fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
  */
 fun <T> T.log(): T = this.also { println(this) }
 
-fun <T> Collection<Collection<T>>.logMatrix(): Collection<Collection<T>> {
-    print(" ")
+/**
+ * Prints the 2D collection along with indices along the x and y coordinate
+ * @param replacements A map of elements of type [T], where the given value [String]
+ * should be printed instead of the element itself
+ */
+fun <T> Collection<Collection<T>>.logMatrix(replacements: Map<T, String>? = null): Collection<Collection<T>> {
+    print("  ")
     for (i in indices) print(i % 10)
     println()
     var row = 0
     forEach {
-        print(row++ % 10)
+        print("${row++ % 10} ")
         it.forEach { element ->
-            print(element.toString())
+            if (replacements != null) {
+                print(replacements[element] ?: element.toString())
+            }
+            else
+                print(element.toString())
         }
         println()
     }

@@ -1,6 +1,7 @@
 package com.example.aoc2024.day6
 
 import com.example.aoc2024.AdventOfCodeChallenge
+import com.example.aoc2024.Direction
 import com.example.aoc2024.readFileLines
 
 @Suppress("ControlFlowWithEmptyBody")
@@ -10,9 +11,7 @@ object Day6Part1 : AdventOfCodeChallenge {
         Guard('^'), Obstacle('#'), Free('.'), Visited('X')
     }
 
-    enum class Direction {
-        Up, Right, Down, Left
-    }
+
 
     class Guard(var x: Int, var y: Int, var facing: Direction) {
         override fun toString() = """
