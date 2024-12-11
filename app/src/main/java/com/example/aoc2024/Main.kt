@@ -75,5 +75,5 @@ val Challenges = listOf(
 )
 
 fun main() {
-    Day11Part2.solution()
+    Challenges.forEach { it.runBoth() }
 }

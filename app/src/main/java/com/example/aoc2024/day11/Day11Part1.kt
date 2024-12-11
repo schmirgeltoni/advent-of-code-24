@@ -1,7 +1,6 @@
 package com.example.aoc2024.day11
 
 import com.example.aoc2024.AdventOfCodeChallenge
-import com.example.aoc2024.log
 
 object Day11Part1 : AdventOfCodeChallenge {
 
@@ -9,7 +8,7 @@ object Day11Part1 : AdventOfCodeChallenge {
 
     val input = listOf<Long>(5, 89749, 6061, 43, 867, 1965860, 0, 206250)
 
-    private fun Long.splitHalves(): List<Long> {
+    fun Long.splitHalves(): List<Long> {
         val string = this.toString()
         return listOf(
             string.substring(0, string.length / 2).toLong(),

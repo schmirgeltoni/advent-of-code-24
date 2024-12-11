@@ -1,7 +1,6 @@
 package com.example.aoc2024.day4
 
 import com.example.aoc2024.AdventOfCodeChallenge
-import com.example.aoc2024.getColumnsAsStrings
 import com.example.aoc2024.readFileLines
 
 object Day4Part1 : AdventOfCodeChallenge {
@@ -37,6 +36,18 @@ object Day4Part1 : AdventOfCodeChallenge {
             string.searchStringAndReturnOccurrences(xmasRegex).also { count += it }
         }
         return count
+    }
+
+    private fun List<String>.getColumnsAsStrings(): List<String> {
+        val ret = mutableListOf<String>()
+        for (i in this.indices) {
+            var currentString = ""
+            for (j in this[0].indices) {
+                currentString += this[j][i]
+            }
+            ret.add(currentString)
+        }
+        return ret
     }
 
     private fun List<String>.extractDiagonals(minLength: Int): List<String> {

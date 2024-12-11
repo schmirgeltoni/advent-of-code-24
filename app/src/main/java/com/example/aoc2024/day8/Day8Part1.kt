@@ -1,8 +1,6 @@
 package com.example.aoc2024.day8
 
 import com.example.aoc2024.AdventOfCodeChallenge
-import com.example.aoc2024.logMatrix
-import com.example.aoc2024.readFileLines
 import kotlin.math.abs
 
 object Day8Part1 : AdventOfCodeChallenge {
@@ -87,7 +85,6 @@ object Day8Part1 : AdventOfCodeChallenge {
         antinodePositions.forEach {
             antinodeMap[it.first][it.second] = '#'
         }
-        antinodeMap.logMatrix()
         return antinodePositions.size
     }
 

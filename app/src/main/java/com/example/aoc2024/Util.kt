@@ -10,24 +10,11 @@ data class Point(val x: Int, val y: Int) {
     override fun toString(): String = "($y|$x)"
 }
 
-
 /**
  * Returns the lines of Input.txt from the given package
  */
 fun readFileLines(packageName: String): List<String> =
     File("app\\src\\main\\java\\com\\example\\aoc2024\\$packageName\\Input.txt").readLines()
-
-fun List<String>.getColumnsAsStrings(): List<String> {
-    val ret = mutableListOf<String>()
-    for (i in this.indices) {
-        var currentString = ""
-        for (j in this[0].indices) {
-            currentString += this[j][i]
-        }
-        ret.add(currentString)
-    }
-    return ret
-}
 
 /**
  * Returns the content of Input.txt of the given package as one string
@@ -46,7 +33,7 @@ fun <T> countOccurrences(list: List<T>): Map<T, Int> = list.groupingBy { it }.ea
 fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
 
 /**
- * Prints [this] and returns it
+ * Prints [T] and returns it
  */
 fun <T> T.log(): T = this.also { println(this) }
 
@@ -57,17 +44,13 @@ fun <T> T.log(): T = this.also { println(this) }
  */
 fun <T> Collection<Collection<T>>.logMatrix(replacements: Map<T, String>? = null): Collection<Collection<T>> {
     print("  ")
-    for (i in indices) print(i % 10)
+    repeat(size) { print(it % 10) }
     println()
     var row = 0
     forEach {
         print("${row++ % 10} ")
         it.forEach { element ->
-            if (replacements != null) {
-                print(replacements[element] ?: element.toString())
-            }
-            else
-                print(element.toString())
+            print(replacements?.get(element) ?: element.toString())
         }
         println()
     }

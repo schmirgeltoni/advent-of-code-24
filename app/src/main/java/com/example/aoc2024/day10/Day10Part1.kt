@@ -2,6 +2,7 @@ package com.example.aoc2024.day10
 
 import com.example.aoc2024.AdventOfCodeChallenge
 import com.example.aoc2024.Point
+import com.example.aoc2024.logMatrix
 import com.example.aoc2024.readFileLines
 
 object Day10Part1 : AdventOfCodeChallenge {
@@ -15,7 +16,17 @@ object Day10Part1 : AdventOfCodeChallenge {
         32019012
         01329801
         10456732
-    """.trimIndent().split("\n").map { it.toList().map { char -> if (char == '.') -1 else char.digitToInt() } }
+    """.trimIndent().split("\n").map { it.toList().map { char -> char.digitToInt() } }
+
+    val testTrail = """
+        ..90..9
+        ...1.98
+        ...2..7
+        6543456
+        765.987
+        876....
+        987....
+    """.trimIndent().trimIndent().split("\n").map { it.toList().map { char -> if (char == '.') -1 else char.digitToInt() } }
 
     private fun List<List<Int>>.findHikingScore(y: Int, x: Int): MutableSet<Point> {
         val set = mutableSetOf<Point>()
@@ -58,6 +69,7 @@ object Day10Part1 : AdventOfCodeChallenge {
     }
 
     override fun test(): Any {
+        testTrail.logMatrix(mapOf(-1 to "."))
         return testData.sumUpTrailScores()
     }
 }
