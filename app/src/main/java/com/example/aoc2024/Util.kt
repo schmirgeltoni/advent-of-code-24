@@ -1,6 +1,5 @@
 package com.example.aoc2024
 
-import java.awt.geom.Point2D
 import java.io.File
 
 enum class Direction {
