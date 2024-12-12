@@ -34,8 +34,11 @@ fun List<String>.toIntList(): List<Int> = this.map { it.toInt() }
 
 /**
  * Prints [T] and returns it
+ *
+ * Prepends [prefix] to [T] and appends [postfix]
  */
-fun <T> T.log(): T = this.also { println(this) }
+fun <T> T.log(prefix: String? = null, postfix: String? = null): T =
+    this.also { println("${prefix ?: ""}$this${postfix ?: ""}") }
 
 /**
  * Prints the 2D collection along with indices along the x and y coordinate
@@ -56,3 +59,8 @@ fun <T> Collection<Collection<T>>.logMatrix(replacements: Map<T, String>? = null
     }
     return this
 }
+
+fun <T> List<List<T>>.above(y: Int, x: Int): T? = if (y != 0) this[y - 1][x] else null
+fun <T> List<List<T>>.below(y: Int, x: Int): T? = if (y != size - 1) this[y + 1][x] else null
+fun <T> List<List<T>>.leftOf(y: Int, x: Int): T? = if (x != 0) this[y][x - 1] else null
+fun <T> List<List<T>>.rightOf(y: Int, x: Int): T? = if (x != this[y].size - 1) this[y][x + 1] else null
